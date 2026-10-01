@@ -1,4 +1,4 @@
-// --- Scroll Animations ---
+// --- Scroll Based Animations ---
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -11,7 +11,7 @@ document.querySelectorAll('.scroll-anim').forEach((el) => {
     observer.observe(el);
 });
 
-// --- Language Change Handler ---
+// --- Language Switcher ---
 function changeLanguage(langCode) {
     const langNames = {
         'en': 'English',
@@ -20,10 +20,10 @@ function changeLanguage(langCode) {
         'te': 'తెలుగు (Telugu)',
         'ta': 'தமிழ் (Tamil)'
     };
-    alert(`Language switched to ${langNames[langCode]}. Speech and UI reloaded in ${langNames[langCode]}.`);
+    alert(`Language changed to ${langNames[langCode]}. In live environment, interface reload with localized voice engine.`);
 }
 
-// --- WhatsApp Modal Tab Switcher ---
+// --- WhatsApp Modal Controls & Tabs ---
 function switchWaTab(tabName) {
     document.getElementById('tabBtnQr').classList.toggle('active', tabName === 'qr');
     document.getElementById('tabBtnSandbox').classList.toggle('active', tabName === 'sandbox');
@@ -36,10 +36,10 @@ function switchWaTab(tabName) {
 
 function copyWaNumber() {
     navigator.clipboard.writeText('+919876543210');
-    alert("WhatsApp Hotline Number (+91 98765 43210) copied to clipboard!");
+    alert("Official SAHAYAK WhatsApp Hotline (+91 98765 43210) copied to clipboard!");
 }
 
-// --- Modal Controls ---
+// --- General Modal Control ---
 function openModal(modalId) {
     document.getElementById(modalId).style.display = 'flex';
 }
@@ -48,7 +48,14 @@ function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
 
-// --- Tab Switching (Registration) ---
+// Close Modal when clicking outside
+window.onclick = function(e) {
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+    }
+};
+
+// --- Registration Role Switcher ---
 let regRole = 'beneficiary';
 function switchRegRole(role) {
     regRole = role;
@@ -64,7 +71,7 @@ function switchRegRole(role) {
     }
 }
 
-// --- Tab Switching (Login) ---
+// --- Login Role Switcher ---
 let loginRole = 'beneficiary';
 function switchLoginRole(role) {
     loginRole = role;
@@ -72,7 +79,7 @@ function switchLoginRole(role) {
     document.getElementById('loginTabGia').classList.toggle('active', role === 'gia');
 }
 
-// --- Form Submissions ---
+// --- Form Handling ---
 function handleRegistration(e) {
     e.preventDefault();
     alert("Registration Successful! Please login to access your portal.");
@@ -103,7 +110,7 @@ function showSection(secId) {
     logout();
 }
 
-// --- Live Voice Demo Chatbot Logic ---
+// --- Chatbot Logic ---
 let isRecording = false;
 
 function toggleVoiceInput() {
@@ -113,7 +120,7 @@ function toggleVoiceInput() {
     if (!isRecording) {
         isRecording = true;
         micBtn.classList.add('recording');
-        input.placeholder = "Listening to voice input... Speak now!";
+        input.placeholder = "Listening in local dialect... Speak now!";
         
         setTimeout(() => {
             isRecording = false;
@@ -200,3 +207,4 @@ function initChart() {
         }
     });
 }
+
