@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAHAYAK | SIH 2026 Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Disclaimer -->
+    <div class="demo-banner">
+        Note: This is only a demo, changes might be done in the future in the real website.
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">SAHAYAK</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showSection('landing')">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><button class="btn-login" onclick="showSection('auth')">Login / Register</button></li>
+        </ul>
+    </nav>
+
+    <!-- LANDING PAGE SECTION -->
+    <section id="landing" class="active-section">
+        <!-- Hero -->
+        <header class="hero scroll-anim">
+            <div class="hero-content">
+                <h1>Empowering SC Communities with Voice-Driven Skilling</h1>
+                <p>AI-Driven Multilingual Voice Assistant for Livelihood Mapping & NSQF-Aligned Skilling Recommendations under PM-AJAY.</p>
+                <button class="btn-primary" onclick="showSection('auth')">Get Started</button>
+            </div>
+        </header>
+
+        <!-- Features -->
+        <section id="features" class="features-section">
+            <h2 class="scroll-anim text-center">Platform Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card scroll-anim">
+                    <i class="fa-solid fa-microphone"></i>
+                    <h3>Multilingual Voice Assistant</h3>
+                    <p>Speak in your regional dialect. No long forms, just a natural conversation to map your skills and aspirations.</p>
+                </div>
+                <div class="feature-card scroll-anim">
+                    <i class="fa-solid fa-server"></i>
+                    <h3>Live Scheme Intelligence</h3>
+                    <p>Matches you with active government schemes fetched in real-time, never relying on outdated static data.</p>
+                </div>
+                <div class="feature-card scroll-anim">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h3>WhatsApp Integration</h3>
+                    <p>Access SAHAYAK simply by sending a voice note on WhatsApp. No app download required for feature-phone users.</p>
+                </div>
+                <div class="feature-card scroll-anim">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <h3>Grievance Redressal</h3>
+                    <p>Voice-captured grievance auto-routed to CPGRAMS / NCSC / SC-ST POA Cell, with anonymous filing + status tracking.[cite: 1]</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- AUTHENTICATION SECTION (Login/Register) -->
+    <section id="auth" class="hidden-section auth-container">
+        <div class="auth-box scroll-anim">
+            <h2>Welcome to SAHAYAK</h2>
+            <div class="role-tabs">
+                <button class="tab active" onclick="switchRole('beneficiary')">Beneficiary</button>
+                <button class="tab" onclick="switchRole('gia')">GIA Officer</button>
+            </div>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label>Mobile Number / ID</label>
+                    <input type="text" placeholder="Enter credentials" required>
+                </div>
+                <div class="input-group">
+                    <label>Password / OTP</label>
+                    <input type="password" placeholder="Enter password or OTP" required>
+                </div>
+                <button type="submit" class="btn-primary w-100">Login to Demo</button>
+                <p class="text-center mt-1">Don't have an account? <a href="#">Register here</a></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- BENEFICIARY DASHBOARD (Chatbot) -->
+    <section id="beneficiary-dash" class="hidden-section dash-container">
+        <div class="chat-interface scroll-anim">
+            <div class="chat-header">
+                <h3>SAHAYAK Assistant</h3>
+                <button onclick="showSection('landing')" class="btn-logout">Logout</button>
+            </div>
+            <div class="chat-box" id="chatBox">
+                <div class="msg bot">Namaste! I am SAHAYAK. What is your current livelihood activity, and what skills would you like to learn?</div>
+            </div>
+            <div class="chat-input">
+                <button class="mic-btn"><i class="fa-solid fa-microphone"></i></button>
+                <input type="text" id="chatInput" placeholder="Type or speak your answer...">
+                <button class="send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- GIA OFFICER DASHBOARD (Charts) -->
+    <section id="gia-dash" class="hidden-section dash-container">
+        <div class="admin-dashboard scroll-anim">
+            <div class="admin-header">
+                <h2>GIA Official Dashboard</h2>
+                <button onclick="showSection('landing')" class="btn-logout">Logout</button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><h3>1,245</h3><p>Total Enrolments</p></div>
+                <div class="stat-card"><h3>89%</h3><p>Placement Rate</p></div>
+                <div class="stat-card"><h3>12</h3><p>Active Schemes</p></div>
+            </div>
+            <div class="chart-container mt-2">
+                <canvas id="enrolmentChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
