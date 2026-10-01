@@ -36,6 +36,8 @@
                     <option value="ta">தமிழ் (Tamil)</option>
                 </select>
             </li>
+            <!-- WhatsApp Connect Button -->
+            <li><button class="btn-whatsapp-nav" onclick="openModal('whatsappModal')"><i class="fa-brands fa-whatsapp"></i> WhatsApp Bot</button></li>
             <li><button class="btn-outline" onclick="openModal('loginModal')">Login</button></li>
             <li><button class="btn-primary" onclick="openModal('registerModal')">Register</button></li>
         </ul>
@@ -51,6 +53,7 @@
                 <p id="heroSubtitle">Empowering Scheduled Caste (SC) beneficiaries under PM-AJAY (GIA Component) with real-time, dynamic scheme recommendations and NSQF-aligned skill pathways in your own spoken language.</p>
                 <div class="hero-buttons">
                     <a href="#live-demo" class="btn-primary-lg"><i class="fa-solid fa-robot"></i> Try Live Voice Assistant</a>
+                    <button class="btn-whatsapp-lg" onclick="openModal('whatsappModal')"><i class="fa-brands fa-whatsapp"></i> Connect on WhatsApp</button>
                     <button class="btn-secondary-lg" onclick="openModal('registerModal')"><i class="fa-solid fa-user-plus"></i> Beneficiary Registration</button>
                 </div>
             </div>
@@ -72,10 +75,10 @@
                     <h3>Live Scheme Intelligence</h3>
                     <p>Continuously fetches updated scheme criteria from MyScheme.gov.in and PM-AJAY portal every 24–48 hours.</p>
                 </div>
-                <div class="feature-card scroll-anim">
+                <div class="feature-card scroll-anim" onclick="openModal('whatsappModal')" style="cursor: pointer;">
                     <i class="fa-brands fa-whatsapp"></i>
                     <h3>WhatsApp & Phone Access</h3>
-                    <p>Accessible via simple WhatsApp voice notes and automated IVR phone calls for users without smartphones.</p>
+                    <p>Click here to connect via WhatsApp voice notes or automated IVR phone calls for users without smartphones.</p>
                 </div>
                 <div class="feature-card scroll-anim">
                     <i class="fa-solid fa-bullseye"></i>
@@ -170,6 +173,88 @@
             </div>
         </div>
     </section>
+
+    <!-- WHATSAPP CONNECT MODAL (EXACT MATCH TO REFERENCE IMAGE) -->
+    <div id="whatsappModal" class="modal">
+        <div class="modal-content wa-modal-container scroll-anim">
+            <div class="wa-header">
+                <div class="wa-header-left">
+                    <div class="wa-icon-badge"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <div>
+                        <h3>Connect to SAHAYAK on WhatsApp</h3>
+                        <p>MoSJE PM-AJAY GIA Multilingual Voice & Chatbot Service</p>
+                    </div>
+                </div>
+                <span class="close-btn wa-close" onclick="closeModal('whatsappModal')">&times;</span>
+            </div>
+
+            <div class="wa-nav-tabs">
+                <button class="wa-tab active" id="tabBtnQr" onclick="switchWaTab('qr')"><i class="fa-solid fa-qrcode"></i> Instant QR & Click-to-Chat</button>
+                <button class="wa-tab" id="tabBtnSandbox" onclick="switchWaTab('sandbox')"><i class="fa-solid fa-mobile-retro"></i> Twilio / Meta Sandbox Setup</button>
+                <button class="wa-tab" id="tabBtnArch" onclick="switchWaTab('architecture')"><i class="fa-solid fa-shield-halved"></i> Dual-Channel Webhook Architecture</button>
+            </div>
+
+            <div class="wa-modal-body">
+                <!-- Tab 1: Instant QR -->
+                <div id="waTabQr" class="wa-tab-content">
+                    <div class="wa-content-card">
+                        <div class="qr-code-box">
+                            <div class="qr-frame">
+                                <div class="qr-corners">
+                                    <div class="qr-corner top-left"></div>
+                                    <div class="qr-corner top-right"></div>
+                                    <div class="qr-corner bottom-left"></div>
+                                    <div class="qr-corner bottom-right"></div>
+                                </div>
+                                <i class="fa-solid fa-qrcode qr-symbol"></i>
+                                <div class="qr-brand-pill">SAHAYAK</div>
+                            </div>
+                            <span>Scan with Phone Camera</span>
+                        </div>
+                        <div class="wa-info-side">
+                            <span class="wa-subhead">OFFICIAL PM-AJAY WHATSAPP HOTLINE</span>
+                            <h2 class="wa-number">+91 98765 43210</h2>
+                            <p class="wa-desc">Beneficiaries can send text, voice notes in any regional language (Hindi, Marathi, Telugu, etc.), or simply say <strong>"नमस्ते"</strong> to begin their livelihood mapping.</p>
+                            <div class="wa-action-buttons">
+                                <a href="https://wa.me/919876543210" target="_blank" class="btn-launch-wa"><i class="fa-solid fa-arrow-up-right-from-square"></i> Launch WhatsApp Directly</a>
+                                <button class="btn-copy-num" onclick="copyWaNumber()"><i class="fa-regular fa-copy"></i> Copy Number</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Sandbox Setup -->
+                <div id="waTabSandbox" class="wa-tab-content hidden-section">
+                    <div class="wa-info-box">
+                        <h4>Twilio & Meta Cloud API Integration Setup</h4>
+                        <p>1. Open WhatsApp on your device and create a new chat with <strong>+1 415 523 8886</strong>.</p>
+                        <p>2. Send message code: <code>join sahayak-bot</code> to initialize session.</p>
+                        <p>3. Record any voice note in local Hindi/Marathi dialect to experience live ASR transcription and NSQF scheme profiling.</p>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Architecture -->
+                <div id="waTabArch" class="wa-tab-content hidden-section">
+                    <div class="wa-info-box">
+                        <h4>Dual-Channel Unified Backend Webhook</h4>
+                        <p>• Node.js & Express REST APIs connected via Meta Cloud API Webhooks.</p>
+                        <p>• Unified Engine: Shares identical profile matching algorithm between Website & WhatsApp.</p>
+                        <p>• Fallback Mechanism: Automatic IVR voice call routing for non-smartphone users.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wa-modal-footer">
+                <div class="wa-status">
+                    <span class="pulse-dot"></span>
+                    <span>WhatsApp Webhook Server: Active (24/7 PM-AJAY GIA Hotline)</span>
+                </div>
+                <button class="btn-wa-simulator" onclick="closeModal('whatsappModal'); location.href='#live-demo';">
+                    <i class="fa-regular fa-comment-dots"></i> Open Interactive WhatsApp Simulator &rarr;
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- REGISTRATION MODAL -->
     <div id="registerModal" class="modal">
