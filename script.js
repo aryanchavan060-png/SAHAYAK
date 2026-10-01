@@ -20,9 +20,23 @@ function changeLanguage(langCode) {
         'te': 'తెలుగు (Telugu)',
         'ta': 'தமிழ் (Tamil)'
     };
-    
-    // Toast notification for prototype
-    alert(`Language switched to ${langNames[langCode]}. In full production, speech and UI components dynamically reload in ${langNames[langCode]}.`);
+    alert(`Language switched to ${langNames[langCode]}. Speech and UI reloaded in ${langNames[langCode]}.`);
+}
+
+// --- WhatsApp Modal Tab Switcher ---
+function switchWaTab(tabName) {
+    document.getElementById('tabBtnQr').classList.toggle('active', tabName === 'qr');
+    document.getElementById('tabBtnSandbox').classList.toggle('active', tabName === 'sandbox');
+    document.getElementById('tabBtnArch').classList.toggle('active', tabName === 'architecture');
+
+    document.getElementById('waTabQr').classList.toggle('hidden-section', tabName !== 'qr');
+    document.getElementById('waTabSandbox').classList.toggle('hidden-section', tabName !== 'sandbox');
+    document.getElementById('waTabArch').classList.toggle('hidden-section', tabName !== 'architecture');
+}
+
+function copyWaNumber() {
+    navigator.clipboard.writeText('+919876543210');
+    alert("WhatsApp Hotline Number (+91 98765 43210) copied to clipboard!");
 }
 
 // --- Modal Controls ---
@@ -101,7 +115,6 @@ function toggleVoiceInput() {
         micBtn.classList.add('recording');
         input.placeholder = "Listening to voice input... Speak now!";
         
-        // Simulate speech recognition
         setTimeout(() => {
             isRecording = false;
             micBtn.classList.remove('recording');
@@ -123,7 +136,6 @@ function handleDemoChatSend() {
 
     const chatBox = document.getElementById('demoChatBox');
 
-    // Add User Message
     const userMsg = document.createElement('div');
     userMsg.className = 'msg user';
     userMsg.textContent = text;
@@ -132,7 +144,6 @@ function handleDemoChatSend() {
     input.value = '';
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    // Simulated Bot Response
     setTimeout(() => {
         const botMsg = document.createElement('div');
         botMsg.className = 'msg bot';
@@ -153,7 +164,6 @@ function handleDemoChatSend() {
     }, 1100);
 }
 
-// Allow Enter key
 document.getElementById('demoChatInput')?.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') handleDemoChatSend();
 });
