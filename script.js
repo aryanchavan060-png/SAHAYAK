@@ -11,7 +11,21 @@ document.querySelectorAll('.scroll-anim').forEach((el) => {
     observer.observe(el);
 });
 
-// --- Modal Control ---
+// --- Language Change Handler ---
+function changeLanguage(langCode) {
+    const langNames = {
+        'en': 'English',
+        'hi': 'हिंदी (Hindi)',
+        'mr': 'मराठी (Marathi)',
+        'te': 'తెలుగు (Telugu)',
+        'ta': 'தமிழ் (Tamil)'
+    };
+    
+    // Toast notification for prototype
+    alert(`Language switched to ${langNames[langCode]}. In full production, speech and UI components dynamically reload in ${langNames[langCode]}.`);
+}
+
+// --- Modal Controls ---
 function openModal(modalId) {
     document.getElementById(modalId).style.display = 'flex';
 }
@@ -20,7 +34,7 @@ function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
 
-// --- Tab Switching Logic (Registration) ---
+// --- Tab Switching (Registration) ---
 let regRole = 'beneficiary';
 function switchRegRole(role) {
     regRole = role;
@@ -36,7 +50,7 @@ function switchRegRole(role) {
     }
 }
 
-// --- Tab Switching Logic (Login) ---
+// --- Tab Switching (Login) ---
 let loginRole = 'beneficiary';
 function switchLoginRole(role) {
     loginRole = role;
@@ -44,10 +58,10 @@ function switchLoginRole(role) {
     document.getElementById('loginTabGia').classList.toggle('active', role === 'gia');
 }
 
-// --- Form Handling ---
+// --- Form Submissions ---
 function handleRegistration(e) {
     e.preventDefault();
-    alert("Registration Successful! Please login to continue.");
+    alert("Registration Successful! Please login to access your portal.");
     closeModal('registerModal');
     openModal('loginModal');
 }
@@ -75,7 +89,7 @@ function showSection(secId) {
     logout();
 }
 
-// --- Live Demo Chatbot Logic ---
+// --- Live Voice Demo Chatbot Logic ---
 let isRecording = false;
 
 function toggleVoiceInput() {
@@ -85,14 +99,14 @@ function toggleVoiceInput() {
     if (!isRecording) {
         isRecording = true;
         micBtn.classList.add('recording');
-        input.placeholder = "Listening in Hindi/Marathi... Boliyen!";
+        input.placeholder = "Listening to voice input... Speak now!";
         
-        // Simulate voice recognition after 3 seconds
+        // Simulate speech recognition
         setTimeout(() => {
             isRecording = false;
             micBtn.classList.remove('recording');
-            input.value = "Nagpur me NSQF skill training trades konse hain?";
-            input.placeholder = "Apna sawal yahan type karein ya mic dabayein...";
+            input.value = "Show active PM-AJAY livelihood grants for micro-enterprises";
+            input.placeholder = "Type or click microphone to speak your query...";
         }, 3000);
     }
 }
@@ -109,7 +123,7 @@ function handleDemoChatSend() {
 
     const chatBox = document.getElementById('demoChatBox');
 
-    // User Message
+    // Add User Message
     const userMsg = document.createElement('div');
     userMsg.className = 'msg user';
     userMsg.textContent = text;
@@ -118,25 +132,25 @@ function handleDemoChatSend() {
     input.value = '';
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    // Simulated Intelligent Bot Reply
+    // Simulated Bot Response
     setTimeout(() => {
         const botMsg = document.createElement('div');
         botMsg.className = 'msg bot';
 
         const query = text.toLowerCase();
-        if (query.includes('scheme') || query.includes('scholarship')) {
-            botMsg.innerHTML = "<strong>Live Scheme Match Found:</strong><br>1. <strong>PM-AJAY Skill Grant:</strong> ₹15,000 stipend per semester for SC/ST students.<br>2. <strong>MahaDBT Post-Matric SC Scholarship:</strong> 100% tuition fee reimbursement for Private Colleges in Nagpur.";
-        } else if (query.includes('nsqf') || query.includes('trade')) {
-            botMsg.innerHTML = "<strong>NSQF Aligned Trades in Nagpur:</strong><br>• CNC Machining & Automation (Level 5)<br>• Web Development & Cloud Support (Level 4)<br>• Solar PV System Installation (Level 4)";
-        } else if (query.includes('complaint') || query.includes('grievance') || query.includes('discrimination')) {
-            botMsg.innerHTML = "<strong>Grievance Redressal Activated:</strong><br>Aapki complaint CPGRAMS aur NCSC Cell ko auto-route kar di gayi hai. Unique Tracking Ref: <code>SAH-NGP-2026-8821</code>";
+        if (query.includes('grant') || query.includes('enterprise') || query.includes('pm-ajay')) {
+            botMsg.innerHTML = "<strong>Active Live Schemes Found:</strong><br>1. <strong>PM-AJAY Micro-Enterprise Grant:</strong> Up to ₹50,000 capital support for SC entrepreneurs.<br>2. <strong>Self-Employment Support Scheme:</strong> Subsidy + interest subvention for small retail units.";
+        } else if (query.includes('skill') || query.includes('nsqf') || query.includes('trade')) {
+            botMsg.innerHTML = "<strong>Recommended NSQF Certification Trades:</strong><br>• Solar PV Installer & Maintenance (Level 4)<br>• Agricultural Equipment Operation (Level 4)<br>• Digital Retail & E-Commerce Executive (Level 5)";
+        } else if (query.includes('agri') || query.includes('farm')) {
+            botMsg.innerHTML = "<strong>Agriculture & Allied Schemes:</strong><br>• PM-AJAY Organic Farming Grant<br>• SC Livestock & Dairy Enterprise Subsidy (Up to 60% Support)";
         } else {
-            botMsg.textContent = "SAHAYAK Live Scheme Engine: Aapka query receive hua hai. MyScheme.gov.in database se real-time eligibility check ho rahi hai.";
+            botMsg.textContent = "SAHAYAK Live Scheme Engine: Validated query against live MyScheme.gov.in APIs. Updated eligibility results fetched successfully.";
         }
 
         chatBox.appendChild(botMsg);
         chatBox.scrollTop = chatBox.scrollHeight;
-    }, 1200);
+    }, 1100);
 }
 
 // Allow Enter key
@@ -155,16 +169,16 @@ function initChart() {
     chartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['YCCE', 'RCOEM', 'PCE', 'KDK', 'GHRCE', 'Pallotti'],
+            labels: ['Micro-Enterprise', 'Artisans', 'Agri Support', 'NSQF Skilling', 'Self-Employment'],
             datasets: [{
-                label: 'SC/ST Scheme Enrolments',
-                data: [320, 280, 410, 290, 350, 190],
+                label: 'SC Beneficiaries Reached',
+                data: [3400, 2100, 2900, 4100, 1950],
                 backgroundColor: '#0f766e',
                 borderRadius: 4
             },
             {
-                label: 'Post-Training Placements',
-                data: [280, 250, 360, 240, 310, 160],
+                label: 'Grants & Placements Approved',
+                data: [2900, 1850, 2600, 3700, 1700],
                 backgroundColor: '#ea580c',
                 borderRadius: 4
             }]
