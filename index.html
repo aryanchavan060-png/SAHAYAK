@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAHAYAK | AI Voice Assistant for PM-AJAY (SIH 2026)</title>
+    <title>SAHAYAK | AI Voice Portal for PM-AJAY (SIH 2026)</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,19 +12,30 @@
 
     <!-- Top Disclaimer Banner -->
     <div class="demo-banner">
-        ⚠️ <strong>SIH 2026 Prototype Demo:</strong> Yeh landing page aur chatbot sirf hackathon demonstration ke liye hai. Final production portal me badlav ho sakte hain.
+        ⚠️ <strong>SIH 2026 Prototype Demo:</strong> This landing page and AI assistant are created for Smart India Hackathon demonstration.
     </div>
 
     <!-- Navigation Bar -->
     <nav>
         <div class="logo-box">
             <span class="logo">SAHAYAK</span>
-            <span class="sub-logo">PM-AJAY Voice Portal</span>
+            <span class="sub-logo">PM-AJAY Livelihood & Skilling Portal</span>
         </div>
         <ul class="nav-links">
             <li><a href="#" onclick="showSection('landing')">Home</a></li>
             <li><a href="#features">Features</a></li>
-            <li><a href="#live-demo">Live Demo Chatbot</a></li>
+            <li><a href="#live-demo">Live Voice Assistant</a></li>
+            <!-- Language Change Feature -->
+            <li class="lang-picker">
+                <i class="fa-solid fa-globe"></i>
+                <select id="languageSelect" onchange="changeLanguage(this.value)">
+                    <option value="en" selected>English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                </select>
+            </li>
             <li><button class="btn-outline" onclick="openModal('loginModal')">Login</button></li>
             <li><button class="btn-primary" onclick="openModal('registerModal')">Register</button></li>
         </ul>
@@ -36,40 +47,40 @@
         <header class="hero scroll-anim">
             <div class="hero-content">
                 <span class="badge">Ministry of Social Justice & Empowerment</span>
-                <h1>Empowering SC/ST Students with AI-Driven Multilingual Voice Assistance</h1>
-                <p>PM-AJAY aur NSQF-aligned skill training schemes ki real-time dynamic matching — direct aapki boli aur aawaz me.</p>
+                <h1 id="heroTitle">AI-Driven Multilingual Voice Assistant for Livelihood & Skilling</h1>
+                <p id="heroSubtitle">Empowering Scheduled Caste (SC) beneficiaries under PM-AJAY (GIA Component) with real-time, dynamic scheme recommendations and NSQF-aligned skill pathways in your own spoken language.</p>
                 <div class="hero-buttons">
-                    <a href="#live-demo" class="btn-primary-lg"><i class="fa-solid fa-robot"></i> Try Live Voice Demo</a>
-                    <button class="btn-secondary-lg" onclick="openModal('registerModal')"><i class="fa-solid fa-user-plus"></i> Student Registration</button>
+                    <a href="#live-demo" class="btn-primary-lg"><i class="fa-solid fa-robot"></i> Try Live Voice Assistant</a>
+                    <button class="btn-secondary-lg" onclick="openModal('registerModal')"><i class="fa-solid fa-user-plus"></i> Beneficiary Registration</button>
                 </div>
             </div>
         </header>
 
         <!-- Features Section -->
         <section id="features" class="features-section">
-            <h2 class="scroll-anim text-center">Key System Features</h2>
-            <p class="section-subtitle text-center">Design kiya gaya hai private colleges ke SC/ST beneficiaries aur regional dialect users ke liye</p>
+            <h2 class="scroll-anim text-center">Key Platform Features</h2>
+            <p class="section-subtitle text-center">Designed for all SC community members including artisans, farmers, youth, and entrepreneurs</p>
             
             <div class="feature-grid">
                 <div class="feature-card scroll-anim">
                     <i class="fa-solid fa-microphone-lines"></i>
                     <h3>Multilingual Voice First</h3>
-                    <p>OpenAI Whisper aur Bhashini APIs dwara sanchalit. Regional languages me natural voice conversation.</p>
+                    <p>Powered by OpenAI Whisper and Bhashini speech engines. Interact naturally in local dialects without text barrier.</p>
                 </div>
                 <div class="feature-card scroll-anim">
                     <i class="fa-solid fa-arrows-rotate"></i>
-                    <h3>Live Scheme Ingestion</h3>
-                    <p>MyScheme.gov.in aur PM-AJAY portal se 24-48 ghante me live self-refreshing scheme database.</p>
+                    <h3>Live Scheme Intelligence</h3>
+                    <p>Continuously fetches updated scheme criteria from MyScheme.gov.in and PM-AJAY portal every 24–48 hours.</p>
                 </div>
                 <div class="feature-card scroll-anim">
                     <i class="fa-brands fa-whatsapp"></i>
-                    <h3>WhatsApp & IVR Reach</h3>
-                    <p>Bina kisi smartphone app download ke, WhatsApp Voice Notes aur IVR call support.</p>
+                    <h3>WhatsApp & Phone Access</h3>
+                    <p>Accessible via simple WhatsApp voice notes and automated IVR phone calls for users without smartphones.</p>
                 </div>
                 <div class="feature-card scroll-anim">
-                    <i class="fa-solid fa-shield-cat"></i>
-                    <h3>Grievance Redressal</h3>
-                    <p>Caste-based discrimination ya scheme rejection par voice-based anonymous complaint auto-routing.</p>
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h3>NSQF & Livelihood Match</h3>
+                    <p>Semantic AI engine matches user background with suitable micro-enterprise grants and skill certifications.</p>
                 </div>
             </div>
         </section>
@@ -78,15 +89,15 @@
         <section id="live-demo" class="demo-section">
             <div class="demo-container scroll-anim">
                 <div class="demo-header">
-                    <h2>🎙️ Try SAHAYAK Live Interactive Demo</h2>
-                    <p>Kisi bhi bhasha me poochein ya neeche diye gaye sample questions par click karein:</p>
+                    <h2>🎙️ Try SAHAYAK Live AI Voice Assistant</h2>
+                    <p>Select a quick sample topic or type/speak your query below:</p>
                 </div>
 
                 <!-- Quick Prompt Chips -->
                 <div class="prompt-chips">
-                    <button class="chip" onclick="sendQuickPrompt('Mujhe SC/ST scholarship ke live schemes batao')">📜 Live Schemes</button>
-                    <button class="chip" onclick="sendQuickPrompt('Nagpur me NSQF skill training trades konse hain?')">🛠️ NSQF Skill Trades</button>
-                    <button class="chip" onclick="sendQuickPrompt('Caste discrimination ki complaint file karni hai')">⚖️ Grievance Filing</button>
+                    <button class="chip" onclick="sendQuickPrompt('Show active PM-AJAY livelihood schemes for micro-enterprises')">💼 Enterprise Grants</button>
+                    <button class="chip" onclick="sendQuickPrompt('What NSQF skill certification courses are available near me?')">🛠️ NSQF Skill Trades</button>
+                    <button class="chip" onclick="sendQuickPrompt('Check eligibility for agriculture and equipment subsidies')">🌾 Agriculture Support</button>
                 </div>
 
                 <!-- Chat Area -->
@@ -104,15 +115,15 @@
                     
                     <div class="chat-box" id="demoChatBox">
                         <div class="msg bot">
-                            Namaste! Main SAHAYAK hoon. Main PM-AJAY, MahaDBT aur NSQF skilling schemes me aapki madad kar sakta hoon. Aap bol kar ya type karke apna sawal pooch sakte hain.
+                            Namaste! I am SAHAYAK. I can help you discover active PM-AJAY livelihood grants, self-employment support, and NSQF skill training programs. You can speak or type your requirements.
                         </div>
                     </div>
 
                     <div class="chat-input-container">
-                        <button class="mic-btn" id="micBtn" onclick="toggleVoiceInput()" title="Voice Record">
+                        <button class="mic-btn" id="micBtn" onclick="toggleVoiceInput()" title="Voice Input">
                             <i class="fa-solid fa-microphone"></i>
                         </button>
-                        <input type="text" id="demoChatInput" placeholder="Apna sawal yahan type karein ya mic dabayein...">
+                        <input type="text" id="demoChatInput" placeholder="Type or click microphone to speak your query...">
                         <button class="send-btn" onclick="handleDemoChatSend()">
                             <i class="fa-solid fa-paper-plane"></i>
                         </button>
@@ -122,20 +133,20 @@
         </section>
     </section>
 
-    <!-- BENEFICIARY DASHBOARD (Login ke baad) -->
+    <!-- BENEFICIARY DASHBOARD -->
     <section id="beneficiary-dash" class="hidden-section dash-container">
         <div class="dash-box scroll-anim">
             <div class="dash-header">
-                <h2>Welcome, Beneficiary Portal</h2>
+                <h2>Beneficiary Portal</h2>
                 <button onclick="logout()" class="btn-logout">Logout</button>
             </div>
-            <p class="dash-intro">Aapka profile: <strong>SC/ST Beneficiary (Nagpur Private College)</strong></p>
+            <p class="dash-intro">Registered Profile: <strong>SC Beneficiary Livelihood Dashboard</strong></p>
             <div class="chat-interface">
                 <div class="chat-box" id="userChatBox">
-                    <div class="msg bot">Aapki profile setup ho gayi hai. PM-AJAY grant ya NSQF trade matching ke liye mujhe batayein.</div>
+                    <div class="msg bot">Your profile is active. Tell me about your livelihood goals or skill training preferences.</div>
                 </div>
                 <div class="chat-input">
-                    <input type="text" id="userChatInput" placeholder="Aapki requirement batayein...">
+                    <input type="text" id="userChatInput" placeholder="State your livelihood or skill requirement...">
                     <button class="send-btn" onclick="sendUserMsg()"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </div>
@@ -146,13 +157,13 @@
     <section id="gia-dash" class="hidden-section dash-container">
         <div class="admin-dashboard scroll-anim">
             <div class="admin-header">
-                <h2>GIA Official Dashboard (Nagpur District)</h2>
+                <h2>GIA Official Analytics Dashboard</h2>
                 <button onclick="logout()" class="btn-logout">Logout</button>
             </div>
             <div class="stats-grid">
-                <div class="stat-card"><h3>1,840</h3><p>Total SC/ST Beneficiaries</p></div>
-                <div class="stat-card"><h3>92%</h3><p>Live Scheme Match Accuracy</p></div>
-                <div class="stat-card"><h3>14</h3><p>Active Grievances Tracked</p></div>
+                <div class="stat-card"><h3>12,450</h3><p>Total SC Beneficiaries Profiling</p></div>
+                <div class="stat-card"><h3>94.8%</h3><p>Live Scheme Match Accuracy</p></div>
+                <div class="stat-card"><h3>38</h3><p>Active PM-AJAY Projects Synced</p></div>
             </div>
             <div class="chart-container mt-2">
                 <canvas id="enrolmentChart"></canvas>
@@ -164,19 +175,19 @@
     <div id="registerModal" class="modal">
         <div class="modal-content scroll-anim">
             <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
-            <h2>Create SAHAYAK Account</h2>
+            <h2>Register for SAHAYAK</h2>
             <div class="role-tabs">
-                <button class="tab active" id="regTabBeneficiary" onclick="switchRegRole('beneficiary')">SC/ST Student</button>
-                <button class="tab" id="regTabGia" onclick="switchRegRole('gia')">GIA Official</button>
+                <button class="tab active" id="regTabBeneficiary" onclick="switchRegRole('beneficiary')">General Beneficiary</button>
+                <button class="tab" id="regTabGia" onclick="switchRegRole('gia')">GIA Officer</button>
             </div>
 
             <form id="registerForm" onsubmit="handleRegistration(event)">
                 <div class="input-group">
                     <label>Full Name</label>
-                    <input type="text" placeholder="Apna pura naam daalein" required>
+                    <input type="text" placeholder="Enter your full name" required>
                 </div>
                 <div class="input-group">
-                    <label>Mobile Number (WhatsApp linked)</label>
+                    <label>Mobile Number (WhatsApp Enabled)</label>
                     <input type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
                 </div>
 
@@ -187,38 +198,39 @@
                             <option value="">Select Category</option>
                             <option value="SC">Scheduled Caste (SC)</option>
                             <option value="ST">Scheduled Tribe (ST)</option>
+                            <option value="Other">Other Beneficiary under PM-AJAY</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <label>Engineering College (Nagpur Private)</label>
+                        <label>Primary Occupation / Interest Area</label>
                         <select required>
-                            <option value="">Select College</option>
-                            <option value="YCCE">YCCE Nagpur</option>
-                            <option value="RCOEM">Ramdeobaba College (RCOEM)</option>
-                            <option value="PCE">Priyadarshini College of Engineering</option>
-                            <option value="KDK">KDK College of Engineering</option>
-                            <option value="GHRCE">GH Raisoni College of Engineering (GHRCE)</option>
-                            <option value="SBJIT">SB Jain Institute of Technology</option>
-                            <option value="Pallotti">St. Vincent Pallotti College</option>
-                            <option value="Anjuman">Anjuman College of Engineering</option>
-                            <option value="JDCOE">JD College of Engineering</option>
+                            <option value="">Select Occupation / Field</option>
+                            <option value="micro_enterprise">Small Retail & Micro-Enterprise</option>
+                            <option value="artisans">Artisans & Traditional Handicrafts</option>
+                            <option value="agriculture">Agriculture & Allied Livelihoods</option>
+                            <option value="technical_skills">Technical & Skilled Trades (NSQF)</option>
+                            <option value="unemployed_youth">Youth Seeking Vocational Training</option>
                         </select>
+                    </div>
+                    <div class="input-group">
+                        <label>District / Region</label>
+                        <input type="text" placeholder="e.g., Nagpur, Maharashtra" required>
                     </div>
                 </div>
 
                 <div id="giaFields" class="hidden-section">
                     <div class="input-group">
-                        <label>Official Govt ID / Employee Code</label>
-                        <input type="text" placeholder="MoSJE / District Officer ID">
+                        <label>Government Officer / Employee ID</label>
+                        <input type="text" placeholder="Enter Official Department ID">
                     </div>
                 </div>
 
                 <div class="input-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="Create password" required>
+                    <label>Create Password</label>
+                    <input type="password" placeholder="Enter password" required>
                 </div>
 
-                <button type="submit" class="btn-primary w-100">Register Now</button>
+                <button type="submit" class="btn-primary w-100">Complete Registration</button>
             </form>
         </div>
     </div>
@@ -236,7 +248,7 @@
             <form onsubmit="handleLogin(event)">
                 <div class="input-group">
                     <label>Mobile Number / Officer ID</label>
-                    <input type="text" placeholder="Enter credential" required>
+                    <input type="text" placeholder="Enter registered mobile or ID" required>
                 </div>
                 <div class="input-group">
                     <label>Password / OTP</label>
@@ -258,12 +270,12 @@
             </div>
 
             <div class="footer-col">
-                <h3>Quick Links</h3>
+                <h3>Official Portals</h3>
                 <ul>
-                    <li><a href="https://myscheme.gov.in" target="_blank">MyScheme Portal</a></li>
-                    <li><a href="https://socialjustice.gov.in" target="_blank">MoSJE Official Website</a></li>
-                    <li><a href="https://mahadbt.maharashtra.gov.in" target="_blank">MahaDBT Portal</a></li>
-                    <li><a href="https://cpgrams.gov.in" target="_blank">CPGRAMS Grievance Cell</a></li>
+                    <li><a href="https://myscheme.gov.in" target="_blank">MyScheme Government Portal</a></li>
+                    <li><a href="https://socialjustice.gov.in" target="_blank">Ministry of Social Justice (MoSJE)</a></li>
+                    <li><a href="https://pmajay.dosje.gov.in" target="_blank">PM-AJAY Portal</a></li>
+                    <li><a href="https://nsdcindia.org" target="_blank">National Skill Development Council</a></li>
                 </ul>
             </div>
 
@@ -277,7 +289,7 @@
 
         <div class="footer-bottom text-center">
             <p>© 2026 SAHAYAK | Smart India Hackathon Submission. Built for MoSJE.</p>
-            <small>Note: This site is a prototype built for SIH 2026. Data used in the demo is simulated for presentation purposes.</small>
+            <small>Note: Prototype designed for SIH 2026 demonstration purposes.</small>
         </div>
     </footer>
 
