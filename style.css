@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #0f766e;   /* Deep Trustworthy Teal/Green */
+    --primary-color: #0f766e;   /* Deep Teal/Green */
     --secondary-color: #ea580c; /* Accent Orange */
     --bg-light: #f8fafc;
     --text-dark: #1e293b;
@@ -53,8 +53,14 @@ nav {
 .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary-color); }
 .sub-logo { font-size: 0.75rem; color: var(--text-light); font-weight: 600; }
 
-.nav-links { list-style: none; display: flex; gap: 1.5rem; align-items: center; }
+.nav-links { list-style: none; display: flex; gap: 1.2rem; align-items: center; }
 .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+
+/* Language Selector */
+.lang-picker { display: flex; align-items: center; gap: 6px; background: #f1f5f9; padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border-color); }
+.lang-picker i { color: var(--primary-color); }
+.lang-picker select { border: none; background: transparent; font-weight: 600; color: var(--text-dark); outline: none; cursor: pointer; }
+
 .btn-outline { background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 7px 16px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 .btn-primary { background: var(--primary-color); color: var(--white); border: none; padding: 9px 18px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
